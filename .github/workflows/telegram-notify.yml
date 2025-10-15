@@ -18,7 +18,8 @@ jobs:
           COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
           URL="${{ github.event.head_commit.url }}"
 
-          MESSAGE="📢 *${AUTHOR}* pushed to *${REPO}* on branch *${BRANCH}* \n\n💬 Commit: ${COMMIT_MESSAGE}\n🔗 [View Commit](${URL})"
+          MESSAGE=$"*${AUTHOR}* pushed to *${REPO}* on branch *${BRANCH}*\n\n Commit: ${COMMIT_MESSAGE}\n🔗 [View Commit](${URL})"
+
 
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
             -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
